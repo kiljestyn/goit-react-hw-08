@@ -1,0 +1,24 @@
+.contactItem {
+  border: 1px solid #ddd;
+  width: 250px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.contactBtn {
+  padding: 3px 14px;
+  cursor: pointer;
+  border-color: rgb(241, 241, 241);
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
+}
+.contactBtn:hover,
+.contactBtn:focus {
+  box-shadow: 0 2px 4px rgba(134, 118, 118, 0.342);
+}
+.text {
+  margin: 4px 10px 4px;
+}

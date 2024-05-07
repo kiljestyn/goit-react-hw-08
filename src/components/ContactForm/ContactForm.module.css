@@ -1,0 +1,33 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  gap: 10px;
+}
+
+.field {
+  padding: 6px;
+  width: 300px;
+}
+.formBtn {
+  padding: 3px 14px;
+  cursor: pointer;
+  border-color: rgb(241, 241, 241);
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
+}
+.formBtn:hover,
+.formBtn:focus {
+  box-shadow: 0 2px 4px rgba(134, 118, 118, 0.342);
+}
+.errorMessage {
+  color: red;
+  margin: 0;
+}
