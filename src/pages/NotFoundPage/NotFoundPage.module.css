@@ -1,0 +1,29 @@
+.link {
+  color: whitesmoke;
+  display: flex;
+  margin-left: 40px;
+  margin-top: 20px;
+  font-size: 22px;
+}
+.text {
+  color: rgb(237, 237, 237);
+  text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.5);
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.text1 {
+  color: brown;
+  font-weight: bold;
+  text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.5);
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  text-align: center;
+  align-items: center;
+  margin-top: 10px;
+}

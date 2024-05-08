@@ -1,0 +1,36 @@
+header {
+  background-color: rgba(58, 57, 57, 0.992);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  position: fixed;
+  top: 0;
+  left: 10;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+}
+
+.link {
+  position: relative;
+  text-decoration: none;
+  margin: 0 5px;
+  font-size: 22px;
+  color: white;
+}
+/* p,
+h1 {
+  color: white;
+} */
+.link:hover {
+  color: rgba(255, 255, 255, 0.823);
+}
+
+.active {
+  color: rgba(255, 255, 255, 0.944);
+}
