@@ -1,44 +1,39 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {
-  getContacts,
-  getDeleteContact,
-  postContact,
-} from "./../../services/api";
+import { instance } from "./../../services/api";
 
 export const fetchContacts = createAsyncThunk(
   "contacts/fetchAll",
-  async (_, thunkApi) => {
+  async (_, { rejectWithValue }) => {
     try {
-      const response = await getContacts();
-      return response; // ТЕ, ЩО ПОВЕРТАЄТЬСЯ З САНКИ ПОТРАПЛЯЄ В action.payload
+      const { data } = await instance.get("/contacts");
+      return data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
 export const addContact = createAsyncThunk(
   "contacts/addContact",
-  async (finalContact, thunkApi) => {
+  async (contact, { rejectWithValue }) => {
     try {
-      const response = await postContact(finalContact);
-
-      return response; // ТЕ, ЩО ПОВЕРТАЄТЬСЯ З САНКИ ПОТРАПЛЯЄ В action.payload
+      const { data } = await instance.post("/contacts", contact);
+      console.log(data);
+      return data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
 export const deleteContact = createAsyncThunk(
   "contacts/deleteContact",
-  async (contactId, thunkApi) => {
+  async (id, { rejectWithValue }) => {
     try {
-      const response = await getDeleteContact(contactId);
-
-      return response; // ТЕ, ЩО ПОВЕРТАЄТЬСЯ З САНКИ ПОТРАПЛЯЄ В action.payload
+      const response = await instance.delete(`/contacts/${id}`);
+      return response.data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );

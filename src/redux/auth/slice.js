@@ -10,13 +10,13 @@ const INITAL_STATE = {
   isRefreshing: false,
 };
 
-const authSlice = createSlice({
+export const authSlice = createSlice({
   // Ім'я слайсу
   name: "auth",
   // Початковий стан редюсера слайсу
   initialState: INITAL_STATE,
   // Об'єкт редюсерів
-  extraReducers: (builder) =>
+  extraReducers: (builder) => {
     builder
       .addCase(register.fulfilled, (state, action) => {
         state.isSignedIn = true;
@@ -36,7 +36,8 @@ const authSlice = createSlice({
       })
       .addCase(logout.fulfilled, () => {
         return INITAL_STATE;
-      }),
+      });
+  },
 
   // .addMatcher(
   //   isAnyOf(
