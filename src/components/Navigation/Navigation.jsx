@@ -8,21 +8,24 @@ const Navigation = () => {
   };
 
   return (
-    <div>
-      <nav>
+    <>
+      <nav className={css.homeLink}>
         <NavLink to="/" className={activePage}>
-          Home
-        </NavLink>
-        {/* <h1>Phonebook</h1> */}
-        <NavLink to="/login" className={activePage}>
-          Log In
-        </NavLink>
-        {/* <p>Need an account?</p> */}
-        <NavLink to="/register" className={activePage}>
-          Sign up
+          PHONEBOOK
         </NavLink>
       </nav>
-    </div>
+      <nav>
+        <div className={css.authLinks}>
+          <NavLink to="/login" className={activePage}>
+            Log In
+          </NavLink>
+          {/* <p>Need an account?</p> */}
+          <NavLink to="/register" className={activePage}>
+            Sign up
+          </NavLink>
+        </div>
+      </nav>
+    </>
   );
 };
 

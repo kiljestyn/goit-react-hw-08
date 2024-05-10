@@ -1,4 +1,7 @@
-.homeSvg {
-  width: 80px;
-  height: 100px;
+.text {
+  margin-top: 0;
+}
+.link {
+  font-size: 22px;
+  color: white;
 }

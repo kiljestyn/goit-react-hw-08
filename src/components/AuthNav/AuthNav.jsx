@@ -12,17 +12,12 @@ const AuthNav = () => {
   };
 
   return (
-    <div>
-      <NavLink className={css.navlink} to="/contacts">
-        {/* <h1>
-          <span style={{ color: "#9c9ef9aa" }}>P</span>h
-          <span style={{ color: "#9cf9c0aa" }}>o</span>n
-          <span style={{ color: "#61dafbaa" }}>e</span>b
-          <span style={{ color: "#80945baa" }}>♾️</span>k
-        </h1> */}
-      </NavLink>
+    <div className={css.container}>
       <div>
-        <span className={css.text}>Hello {user.name}</span>
+        <NavLink className={css.navlink} to="/contacts"></NavLink>
+      </div>
+      <div className={css.authNavCont}>
+        <span className={css.text}>Hello, {user.name}</span>
         <button className={css.logOutBtn} onClick={onLogout} type="button">
           Say, bye
         </button>

@@ -42,22 +42,14 @@ const ContactForm = () => {
           <span>Name</span>
           <br />
           <Field className={css.field} type="text" name="name" />
-          <ErrorMessage
-            className={css.errorMessage}
-            component="p"
-            name="name"
-          />
+          <ErrorMessage className={css.error} component="p" name="name" />
           <br />
         </label>
         <label>
           <span>Number</span>
           <br />
           <Field className={css.field} type="text" name="number" />
-          <ErrorMessage
-            className={css.errorMessage}
-            component="p"
-            name="number"
-          />
+          <ErrorMessage className={css.error} component="p" name="number" />
           <br />
         </label>
         <button className={css.formBtn} type="submit">

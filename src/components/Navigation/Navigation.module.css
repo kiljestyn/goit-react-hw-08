@@ -4,16 +4,18 @@ header {
   padding: 16px;
   position: fixed;
   top: 0;
-  left: 10;
+
+  right: 20;
   width: 100%;
   z-index: 1000;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 
 nav {
   display: flex;
+  justify-content: space-between;
 }
 
 .link {
@@ -22,6 +24,14 @@ nav {
   margin: 0 5px;
   font-size: 22px;
   color: white;
+}
+.authLinks {
+  display: flex;
+}
+
+.homeLink {
+  margin-right: auto;
+  margin-left: 40px;
 }
 /* p,
 h1 {
@@ -33,4 +43,11 @@ h1 {
 
 .active {
   color: rgba(255, 255, 255, 0.944);
+}
+
+.authLinks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 60px;
 }

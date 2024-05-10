@@ -3,31 +3,38 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 350px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 16px;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  gap: 10px;
+  gap: 12px;
 }
 
 .field {
   padding: 6px;
-  width: 300px;
+  width: 380px;
 }
 .formBtn {
-  padding: 3px 14px;
   cursor: pointer;
   border-color: rgb(241, 241, 241);
   border-radius: 2px;
   transition: background-color 0.3s ease;
+  display: inline-block;
+  padding: 6px 18px;
+  font-size: 16px;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+  margin-top: 8px;
 }
 .formBtn:hover,
 .formBtn:focus {
   box-shadow: 0 2px 4px rgba(134, 118, 118, 0.342);
 }
-.errorMessage {
+.error {
   color: red;
-  margin: 0;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0;
 }

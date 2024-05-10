@@ -12,7 +12,6 @@ const LoginForm = () => {
 
   const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
-    console.log(values);
     dispatch(login(values));
     actions.resetForm();
   };
@@ -29,6 +28,7 @@ const LoginForm = () => {
         validationSchema={LoginFormSchema}
       >
         <Form className={css.form}>
+          <h2 className={css.title}>Log in</h2>
           <label>
             <span>Email:</span>
             <br />
@@ -38,7 +38,7 @@ const LoginForm = () => {
               name="email"
               placeholder="example@gmail.com"
             />
-            <ErrorMessage component="p" name="email" />
+            <ErrorMessage className={css.error} component="p" name="email" />
           </label>{" "}
           <br />
           <label>
@@ -50,11 +50,11 @@ const LoginForm = () => {
               name="password"
               placeholder="Enter your password"
             />
-            <ErrorMessage component="p" name="password" />
+            <ErrorMessage className={css.error} component="p" name="password" />
           </label>
           <br />
           <button className={css.formBtn} type="submit">
-            Log In
+            Let`s start
           </button>
         </Form>
       </Formik>

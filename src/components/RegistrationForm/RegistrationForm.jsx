@@ -47,7 +47,7 @@ const RegistrationForm = () => {
       onSubmit={handleSubmit}
     >
       <Form className={css.form}>
-        <h2>Register user</h2>
+        <h2 className={css.title}>Register user</h2>
         <label>
           <span>Name:</span>
           <br />
@@ -57,11 +57,7 @@ const RegistrationForm = () => {
             name="name"
             placeholder="Your name"
           />
-          <ErrorMessage
-            className={css.errorMessage}
-            component="p"
-            name="name"
-          />
+          <ErrorMessage className={css.error} component="p" name="name" />
         </label>
         <br />
         <label>
@@ -73,7 +69,7 @@ const RegistrationForm = () => {
             name="email"
             placeholder="example@gmail.com"
           />
-          <ErrorMessage component="p" name="email" />
+          <ErrorMessage className={css.error} component="p" name="email" />
         </label>{" "}
         <br />
         <label>
@@ -85,7 +81,7 @@ const RegistrationForm = () => {
             name="password"
             placeholder="Enter your password"
           />
-          <ErrorMessage component="p" name="password" />
+          <ErrorMessage className={css.error} component="p" name="password" />
         </label>
         <br />
         <button className={css.formBtn} type="submit">
