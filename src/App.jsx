@@ -1,21 +1,20 @@
 import Loader from "./components/Loader/Loader";
-import { Suspense, useEffect } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import HomePage from "./pages/HomePage/HomePage";
-import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import ContactsPage from "./pages/ContactsPage/ContactsPage";
-import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
-import LoginPage from "./pages/LoginPage/LoginPage";
-
-import Layout from "./components/Layout/Layout";
+const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
+const ContactsPage = lazy(() => import("./pages/ContactsPage/ContactsPage"));
+const RegistrationPage = lazy(() =>
+  import("./pages/RegistrationPage/RegistrationPage")
+);
+const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
 
 import { refreshUser } from "./redux/auth/operations";
 import { useDispatch } from "react-redux";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-
-// import phonebookContacts from "./contact.json";
+import Layout from "./components/Layout/Layout";
 
 const App = () => {
   const dispatch = useDispatch();
