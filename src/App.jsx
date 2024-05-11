@@ -19,6 +19,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 const App = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);

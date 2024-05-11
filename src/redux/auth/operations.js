@@ -1,70 +1,86 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { instance } from "../../services/api";
+import { toast } from "react-hot-toast";
+
+import {
+  clearToken,
+  requestGetCurrentUser,
+  requestLogOut,
+  requestSignIn,
+  requestSignUp,
+  setToken,
+} from "../../services/api";
 // import axios from "axios";
 
 // export const instance = axios.create({
 //   baseURL: "https://connections-api.herokuapp.com",
 // });
 
-export const setToken = (token) => {
-  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
+// export const setToken = (token) => {
+//   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+// };
 
-export const clearToken = () =>
-  (instance.defaults.headers.common.Authorization = "");
+// export const clearToken = () =>
+//   (instance.defaults.headers.common.Authorization = "");
 
 export const register = createAsyncThunk(
   "auth/register",
-  async (formData, thunkApi) => {
+  async (formData, thunkAPI) => {
     try {
-      const { data } = await instance.post("/users/signup", formData);
-      // console.log("REGISTER data: ", data);
-      setToken(data.token);
+      const data = await requestSignUp(formData); // console.log("REGISTER data: ", data);
 
       return data;
-    } catch (e) {
-      return thunkApi.rejectWithValue(e.message);
+    } catch (err) {
+      // console.log("not valid email or password");
+      toast.error("This email is already in use. Please log in.");
+      return thunkAPI.rejectWithValue(err.message);
     }
   }
 );
 
 export const login = createAsyncThunk(
   "auth/login",
-  async (formData, { rejectWithValue }) => {
+  async (formData, thunkAPI) => {
     try {
-      const { data } = await instance.post("/users/login", formData);
-      setToken(data.token);
+      const data = await requestSignIn(formData);
       return data;
-    } catch (e) {
-      return rejectWithValue(e.message);
+    } catch (err) {
+      toast.error("Please sign up");
+      return thunkAPI.rejectWithValue(err.message);
     }
   }
 );
+
+export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
+  try {
+    await requestLogOut();
+    clearToken();
+    return;
+  } catch (err) {
+    toast.error("Try again later.");
+    return thunkAPI.rejectWithValue(err.message);
+  }
+});
 
 export const refreshUser = createAsyncThunk(
   "auth/refresh",
-  async (_, { rejectWithValue, getState }) => {
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const token = state.auth.token;
+    setToken(token);
     try {
-      const state = getState();
-      const token = state.auth.token;
-      setToken(token);
-      const { data } = await instance.get("/users/current");
+      const data = await requestGetCurrentUser();
       return data;
-    } catch (e) {
-      return rejectWithValue(e.message);
+    } catch (err) {
+      toast.error("Try again later.");
+      return thunkAPI.rejectWithValue(err.message);
     }
-  }
-);
-
-export const logout = createAsyncThunk(
-  "auth/logout",
-  async (_, { rejectWithValue }) => {
-    try {
-      await instance.post("/users/logout");
-      clearToken();
-      return;
-    } catch (e) {
-      return rejectWithValue(e.message);
-    }
+  },
+  {
+    condition: (_, thunkAPI) => {
+      const state = thunkAPI.getState();
+      const token = state.auth.token;
+      if (!token) return false;
+      return true;
+    },
   }
 );
